@@ -5,10 +5,9 @@ import './App.css';
 
 class App extends Component {
   state = {
-    alert: null // initialising an empty alert
+    alert: null
   };
 
-  // Defining first alert
   showAlert() {
     const getAlert = () => (
       <SweetAlert
@@ -18,32 +17,14 @@ class App extends Component {
         confirmBtnBsStyle="warning"
         cancelBtnBsStyle="default"
         title="Are you sure you want to delete this project?"
-        onConfirm={() => this.showSecondAlert()} // Shows the second dialog
-        onCancel={() => this.closeAlert()}
+        onConfirm={() => this.deleteFile()}
+        onCancel={() => this.cancelDelete()}
       >
         You will not be able to recover this project!
       </SweetAlert>
     );
     this.setState({
       alert: getAlert()
-    });
-  }
-
-  // Defining the second alert, which will show after clickin on 'Yes' button in the first dialog
-  showSecondAlert() {
-    const getSecondAlert = () => (
-      <SweetAlert
-        warning
-        confirmBtnText="Close!"
-        confirmBtnBsStyle="success"
-        title="It was confirmed"
-        onConfirm={() => this.closeAlert()}
-      >
-        Click on close button to close this dialog!
-      </SweetAlert>
-    );
-    this.setState({
-      alert: getSecondAlert()
     });
   }
 
@@ -54,7 +35,7 @@ class App extends Component {
     });
   }
 
-  closeAlert() {
+  cancelDelete() {
     this.setState({
       alert: null
     });
