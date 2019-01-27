@@ -5,9 +5,10 @@ import './App.css';
 
 class App extends Component {
   state = {
-    alert: null
+    alert: null // initialising an empty alert
   };
 
+  // Defining first alert
   showAlert() {
     const getAlert = () => (
       <SweetAlert
@@ -17,7 +18,7 @@ class App extends Component {
         confirmBtnBsStyle="warning"
         cancelBtnBsStyle="default"
         title="Are you sure you want to delete this project?"
-        onConfirm={() => this.showSecondAlert()}
+        onConfirm={() => this.showSecondAlert()} // Shows the second dialog
         onCancel={() => this.closeAlert()}
       >
         You will not be able to recover this project!
@@ -28,6 +29,7 @@ class App extends Component {
     });
   }
 
+  // Defining the second alert, which will show after clickin on 'Yes' button in the first dialog
   showSecondAlert() {
     const getSecondAlert = () => (
       <SweetAlert
