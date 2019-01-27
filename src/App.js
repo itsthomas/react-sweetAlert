@@ -19,7 +19,7 @@ class App extends Component {
         showCancel
         confirmBtnText="Yes!"
         confirmBtnBsStyle="warning"
-        cancelBtnBsStyle="default"
+        cancelBtnBsStyle="info"
         title="Are you sure you want to delete this project?"
         onConfirm={() => this.showSecondAlert()} // Shows the second dialog
         onCancel={() => this.closeAlert()}
