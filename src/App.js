@@ -17,14 +17,31 @@ class App extends Component {
         confirmBtnBsStyle="warning"
         cancelBtnBsStyle="default"
         title="Are you sure you want to delete this project?"
-        onConfirm={() => this.deleteFile()}
-        onCancel={() => this.cancelDelete()}
+        onConfirm={() => this.showSecondAlert()}
+        onCancel={() => this.closeAlert()}
       >
         You will not be able to recover this project!
       </SweetAlert>
     );
     this.setState({
       alert: getAlert()
+    });
+  }
+
+  showSecondAlert() {
+    const getSecondAlert = () => (
+      <SweetAlert
+        warning
+        confirmBtnText="Close!"
+        confirmBtnBsStyle="success"
+        title="It was confirmed"
+        onConfirm={() => this.closeAlert()}
+      >
+        Click on close button to close this dialog!
+      </SweetAlert>
+    );
+    this.setState({
+      alert: getSecondAlert()
     });
   }
 
@@ -35,7 +52,7 @@ class App extends Component {
     });
   }
 
-  cancelDelete() {
+  closeAlert() {
     this.setState({
       alert: null
     });
